@@ -18,4 +18,9 @@ class Cliente extends Model
             'cpf_cnpj' => 'required|unique:clientes'
        ];
    }
+
+   public function file($id){
+        $data = $this->find($id);
+        return $data->image;
+   }
 }
