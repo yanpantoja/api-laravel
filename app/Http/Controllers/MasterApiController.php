@@ -12,7 +12,6 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Facades\Storage;
 
-
 class MasterApiController extends BaseController
 {
 
@@ -38,7 +37,7 @@ class MasterApiController extends BaseController
 
             $nameFile = "{$name}.{$ext}";
 
-            $upload = Image::make($dataForm[$this->upload])->resize(177,236)->save(\storage_path("app/public/{$this->path}/{$nameFile}", 70));
+            $upload = Image::make($dataForm[$this->upload])->resize($this->width,$this->height)->save(storage_path("app/public/{$this->path}/{$nameFile}", 70));
 
             if(!$upload){
                 return response()->json(['error' => 'Falha ao fazer upload'], 500);
@@ -83,7 +82,7 @@ class MasterApiController extends BaseController
 
             $nameFile = "{$name}.{$ext}";
 
-            $upload = Image::make($dataForm[$this->upload])->resize(177,236)->save(\storage_path("app/public/{$this->path}/{$nameFile}", 70));
+            $upload = Image::make($dataForm[$this->upload])->resize($this->width,$this->height)->save(\storage_path("app/public/{$this->path}/{$nameFile}", 70));
 
             if(!$upload){
                 return response()->json(['error' => 'Falha ao fazer upload'], 500);
